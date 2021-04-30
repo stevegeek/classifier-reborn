@@ -94,7 +94,8 @@ module ClassifierReborn
         @raw_norm   = vec.normalize
         @raw_vector = vec
       else
-        @raw_norm   = Vector[*vec].normalize
+        v = Vector[*vec]
+        @raw_norm   = v.zero? ? v : v.normalize
         @raw_vector = Vector[*vec]
       end
     end
