@@ -327,7 +327,7 @@ module ClassifierReborn
       # TODO: Check that M>=N on these dimensions! Transpose helps assure this
       u, v, s = matrix.SV_decomp
       # TODO: Better than 75% term, please. :\
-      s_cutoff = s.sort.reverse[(s.size * cutoff).round - 1]
+      s_cutoff = s.map { |v| v.nan? ? 0 : v }.sort.reverse[(s.size * cutoff).round - 1]
       s.size.times do |ord|
         s[ord] = 0.0 if s[ord] < s_cutoff
       end
