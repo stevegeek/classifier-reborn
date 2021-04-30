@@ -147,7 +147,7 @@ module ClassifierReborn
         ntdm.size[1].times do |col|
           vec = GSL::Vector.alloc(ntdm.column(col)).row
           doc_list[col].lsi_vector = vec
-          doc_list[col].lsi_norm = vec.zero? ? vec : vec.normalize
+          doc_list[col].lsi_norm = vec.normalize
         end
       else
         tdm = Matrix.rows(tda).trans
